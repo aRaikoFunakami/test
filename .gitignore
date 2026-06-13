@@ -1,3 +1,2 @@
-# Issue 下書き（scope 未定のスクラッチ）。記録に残したくなれば各行を外す。
-/issues/*.md
-!/issues/.gitkeep
+# Issue 下書き（scope 未定のスクラッチ）。フォルダごと追跡しない。/ticket が無ければ作る。
+/issues/
