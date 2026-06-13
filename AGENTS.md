@@ -23,3 +23,4 @@
 |-------------|-------------------|
 | **[instructions/git-commit.md](instructions/git-commit.md)** | コミットを作成するとき（毎回） |
 | **[instructions/github-workflow.md](instructions/github-workflow.md)** | GitHub を操作するとき（Issue 起票・閲覧・PR 等、毎回） |
+| **[instructions/doc-writing.md](instructions/doc-writing.md)** | 設計ドキュメント・技術文書を作成・更新するとき（毎回） |
