@@ -32,4 +32,5 @@ argument-hint: "@issues/<file>.md"
 
 注意:
 - gh 未認証なら `gh auth status` で確認し、ユーザーに `gh auth login` を促す。
-- labels が空 / 存在しないラベルだとエラーになる。テンプレ由来の bug/documentation/feature は登録済み前提。
+- labels が空 / 存在しないラベルだと gh がエラーになる。発行前に `gh label list` で確認し、
+  テンプレ由来の bug/documentation/feature が無ければ `gh label create <name>` で作ってから発行する。

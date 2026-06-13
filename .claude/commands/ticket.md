@@ -1,10 +1,10 @@
 ---
-description: Issue 下書きを種別選択して issues/ に作成し Zed で開く
+description: Issue 下書きを種別選択して issues/ に作成しフルパスを表示
 ---
 
 <!--
 概要: チケット(Issue)下書き作成コマンド。
-種別(bug/docs/feature)を選ばせ、対応テンプレを issues/ にコピーして Zed で開く。
+種別(bug/docs/feature)を選ばせ、対応テンプレを issues/ にコピーし、絶対フルパスを表示する。
 発行は別コマンド /ticket-issue で行う。テンプレ実体は .github/ISSUE_TEMPLATE/ にある。
 -->
 
@@ -20,8 +20,9 @@ GitHub Issue の下書きを作成する。手順を厳守する。
    `issues/` が無ければ作る。
 4. テンプレ全文（**frontmatter 含む**）をその下書きファイルにコピーする。
    frontmatter は発行時に title/label を拾うため残す。
-5. `zed <path>` で開く。
-6. 作成パスを表示し、「編集・保存後 `/ticket-issue @<path>` で GitHub に発行」と案内する。
+5. エディタでは開かない。作成ファイルの**絶対フルパス**を出力する
+   （Claude Code 上でクリックすれば開ける）。`pwd` 等で絶対パスを得て表示する。
+6. 「クリックで開いて編集・保存後 `/ticket-issue @<path>` で GitHub に発行」と案内する。
 
 注意:
 - 内容は生成しない。テンプレをコピーするだけ。本文はユーザーが Zed で記述する。
