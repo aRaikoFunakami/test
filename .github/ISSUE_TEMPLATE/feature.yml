@@ -1,0 +1,65 @@
+name: 機能追加 (Feature)
+description: 新機能・機能改善。AI が単独で実装・完結できる技術仕様レベルまで記述する。
+title: "feat(scope): "
+labels: ["feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issue は **追加質問なしで着手できる粒度** で記述すること（instructions/github-workflow.md）。
+        曖昧な要望のまま起票しない。
+
+  - type: input
+    id: branch
+    attributes:
+      label: ブランチ
+      description: 起票後に作成する feature ブランチ名（issue-number は採番後に確定）
+      placeholder: feature/<issue-number>-short-description
+    validations:
+      required: false
+
+  - type: textarea
+    id: background
+    attributes:
+      label: 背景・目的
+      description: なぜやるか。解決する課題・現状の問題。
+    validations:
+      required: true
+
+  - type: textarea
+    id: target
+    attributes:
+      label: 対象ファイル / モジュール
+      description: 触るファイル・ディレクトリを具体名で列挙。
+      placeholder: |
+        - src/auth/token.ts
+        - src/middleware/verify.ts
+    validations:
+      required: true
+
+  - type: textarea
+    id: approach
+    attributes:
+      label: 変更方針
+      description: 実装アプローチ。どう作るか。
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 受け入れ条件（テスト / 検証方法）
+      description: 完了判定基準。テストコマンド・確認手順・期待結果。
+      placeholder: |
+        - [ ] `npm test` 全通過
+        - [ ] 新規ケース X が期待値を返す
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 補足 / 参考
+      description: 関連 Issue/PR、参考リンク、制約事項（任意）。
+    validations:
+      required: false
