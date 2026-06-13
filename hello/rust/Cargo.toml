@@ -1,0 +1,8 @@
+# 概要: Rust 版 hello world の cargo マニフェスト。
+# 標準ツールチェーン(cargo)のみで動作し、追加依存は持たない。Issue #10。
+[package]
+name = "hello"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
