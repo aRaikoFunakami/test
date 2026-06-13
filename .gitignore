@@ -1,2 +1,6 @@
 # Issue 下書き（scope 未定のスクラッチ）。フォルダごと追跡しない。/ticket が無ければ作る。
 /issues/
+
+# ビルド生成物（hello world 各言語）。ソースのみ追跡し成果物は追跡しない。
+/hello/rust/target/
+/hello/c/hello
