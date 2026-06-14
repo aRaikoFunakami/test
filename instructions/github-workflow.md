@@ -9,7 +9,8 @@
 
 ## リポジトリ
 
-- **URL:** `https://github.com/access-company/smartestiroid-core.git`
+- **URL:** `https://github.com/aRaikoFunakami/test.git`
+- **default ブランチ:** `master`（PR のマージ先。closing keyword の発火条件に関わる）
 
 ⸻
 
@@ -33,8 +34,8 @@
 
 ### 禁止事項
 
-1. **`develop` ブランチで直接作業しないこと** — 必ず feature ブランチを作成してから作業する。
-2. **`main` ブランチで作業しないこと** — main は本番リリース専用とする。
+1. **default ブランチ（`master`）で直接作業しないこと** — 必ず feature ブランチを作成してから作業する。
+2. **default ブランチへ直接 push しないこと** — 変更は必ず PR 経由でマージする。
 
 ### ブランチ命名規則
 
@@ -45,4 +46,4 @@
 | Hotfix | `hotfix/<issue-number>-<short-description>` |
 | Documentation | `docs/<issue-number>-<short-description>` |
 
-- 作業開始前に、現在のブランチが `develop` / `main` でないことを確認する。該当する場合は上記命名規則で feature ブランチを作成してから着手する。
+- 作業開始前に、現在のブランチが default ブランチ（`master`）でないことを確認する。該当する場合は上記命名規則で feature ブランチを作成してから着手する。
