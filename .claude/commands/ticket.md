@@ -1,10 +1,10 @@
 ---
-description: Issue 下書きを種別選択して issues/ に作成しフルパスを表示
+description: Issue 下書きを種別選択して .issue_drafts/ に作成しフルパスを表示
 ---
 
 <!--
 概要: チケット(Issue)下書き作成コマンド。
-種別(bug/docs/feature)を選ばせ、対応テンプレに沿って下書きを issues/ に作成し、絶対フルパスを表示する。
+種別(bug/docs/feature)を選ばせ、対応テンプレに沿って下書きを .issue_drafts/ に作成し、絶対フルパスを表示する。
 本文はその時点の会話内容をベースに生成し、ユーザーがレビュー・編集する。
 発行は別コマンド /ticket-issue で行う。テンプレ実体は .github/ISSUE_TEMPLATE/ にある。
 -->
@@ -17,8 +17,8 @@ GitHub Issue の下書きを作成する。手順を厳守する。
    - docs → `.github/ISSUE_TEMPLATE/docs.md`
    - feature → `.github/ISSUE_TEMPLATE/feature.md`
 3. 保存先ファイル名を決める。`date +%Y%m%d-%H%M%S` を Bash で取得し、
-   `issues/<type>-<timestamp>.md`（例 `issues/feature-20260613-141500.md`）とする。
-   `issues/` が無ければ作る。
+   `.issue_drafts/<type>-<timestamp>.md`（例 `.issue_drafts/feature-20260613-141500.md`）とする。
+   `.issue_drafts/` が無ければ作る。
 4. テンプレ構造（節・見出し）に沿って下書きを作成する。
    - **frontmatter** はテンプレからそのままコピーする（発行時に title/label を拾うため残す）。
      ただし `title:` は会話内容を要約した具体的なものに置き換える。プレースホルダ（`scope`/`<issue-number>` 等）は残さない。

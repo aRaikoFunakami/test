@@ -1,12 +1,12 @@
 ---
-description: 会話/開発計画から複数チケット下書きを生成して issues/ に作成しフルパス一覧を表示
+description: 会話/開発計画から複数チケット下書きを生成して .issue_drafts/ に作成しフルパス一覧を表示
 argument-hint: "[@PLAN.md など計画ファイル（任意）]"
 ---
 
 <!--
 概要: 複数チケット下書き一括生成コマンド（計画 → N 下書き）。
 その時点の会話または指定された開発計画から作業項目を抽出し、項目ごとに種別(bug/docs/feature)を
-割り当て、対応テンプレ構造に沿って issues/<type>-<timestamp>-NN.md を N 件生成する。
+割り当て、対応テンプレ構造に沿って .issue_drafts/<type>-<timestamp>-NN.md を N 件生成する。
 1 下書き版は /ticket、発行は /ticket-issue（いずれも本コマンドからは変更しない）。
 発行は誤起票リスク回避のため本コマンドに含めず、生成した各下書きを /ticket-issue @<path> で個別発行する。
 テンプレ実体は .github/ISSUE_TEMPLATE/ にある。
@@ -26,8 +26,8 @@ argument-hint: "[@PLAN.md など計画ファイル（任意）]"
 
 3. **下書きの生成**
    - 保存先 timestamp を `date +%Y%m%d-%H%M%S` を Bash で 1 回取得し、全項目で共有する。
-   - 各項目の保存先を `issues/<type>-<timestamp>-NN.md` とする
-     （`NN` は項目連番 `01, 02, …`。同一 timestamp 内で連番により衝突回避）。`issues/` が無ければ作る。
+   - 各項目の保存先を `.issue_drafts/<type>-<timestamp>-NN.md` とする
+     （`NN` は項目連番 `01, 02, …`。同一 timestamp 内で連番により衝突回避）。`.issue_drafts/` が無ければ作る。
    - 各項目について、割り当てた種別のテンプレを読む:
      - bug → `.github/ISSUE_TEMPLATE/bug.md`
      - docs → `.github/ISSUE_TEMPLATE/docs.md`

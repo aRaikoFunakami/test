@@ -1,6 +1,6 @@
 ---
-description: issues/ の下書きファイルを gh で GitHub Issue として発行する
-argument-hint: "@issues/<file>.md"
+description: .issue_drafts/ の下書きファイルを gh で GitHub Issue として発行する
+argument-hint: "@.issue_drafts/<file>.md"
 ---
 
 <!--
@@ -12,7 +12,7 @@ argument-hint: "@issues/<file>.md"
 引数 `$ARGUMENTS` の下書きファイルを GitHub Issue として発行する。手順を厳守する。
 
 1. 対象パスを `$ARGUMENTS` から取得する。先頭の `@` は除去する。
-   - 空なら `issues/*.md` の最新更新ファイルを候補として提示し、確認を取る。
+   - 空なら `.issue_drafts/*.md` の最新更新ファイルを候補として提示し、確認を取る。
 2. ファイルを読む。frontmatter（先頭 `---` から次の `---` まで）から抽出:
    - `title:` の値（クォート除去）
    - `labels:` の値（カンマ区切りならそのまま）
