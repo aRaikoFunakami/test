@@ -1,6 +1,6 @@
 ---
-description: issues/ の下書きファイルを gh で GitHub Issue として発行する
-argument-hint: "@issues/<file>.md"
+description: .issue_drafts/ の下書きファイルを gh で GitHub Issue として発行する
+argument-hint: "@.issue_drafts/<file>.md"
 ---
 
 <!--
@@ -12,7 +12,7 @@ argument-hint: "@issues/<file>.md"
 引数 `$ARGUMENTS` の下書きファイルを GitHub Issue として発行する。手順を厳守する。
 
 1. 対象パスを `$ARGUMENTS` から取得する。先頭の `@` は除去する。
-   - 空なら `issues/*.md` の最新更新ファイルを候補として提示し、確認を取る。
+   - 空なら `.issue_drafts/*.md` の最新更新ファイルを候補として提示し、確認を取る。
 2. ファイルを読む。frontmatter（先頭 `---` から次の `---` まで）から抽出:
    - `title:` の値（クォート除去）
    - `labels:` の値（カンマ区切りならそのまま）
@@ -28,7 +28,12 @@ argument-hint: "@issues/<file>.md"
    ```
    `--title --label --body-file` を揃えるので非対話で発行される。
 6. 出力された Issue URL を表示する。
-7. 任意: 発行後、下書きファイル名末尾に発行番号を追記するか聞く（しなくてよい）。
+7. **発行確定後の後始末（下書き削除）**:
+   - Issue URL が返り発行が確定したことを確認してから行う。発行前・発行失敗時は削除しない。
+   - GitHub が source of truth になったため、ローカル下書きは不要。削除対象パス（発行した下書きと
+     `/tmp/ticket-body-<basename>.txt`）をユーザーに提示し、削除してよいか確認する。
+   - 同意後に削除する。`.issue_drafts/` ディレクトリ自体は残す（次の下書き用）。
+   - 発行後に下書きファイル名へ発行番号を追記したい場合は、削除前にその旨を選べる（任意）。
 
 注意:
 - gh 未認証なら `gh auth status` で確認し、ユーザーに `gh auth login` を促す。
