@@ -10,6 +10,8 @@
 
 コミットメッセージを生成する前に、必ず git diff と最近のコミット履歴を確認し、既存プロジェクトのスタイルに合わせること。
 
+Issue との紐付けはコミットメッセージではなく PR 本文の closing keyword（`Closes #<n>` 等）で行う。コミットメッセージに `#<n>` を書いても Issue⇄PR の双方向リンクは生成されない（→ [github-workflow.md](github-workflow.md)）。
+
 ⸻
 
 フォーマット
