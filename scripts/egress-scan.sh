@@ -27,7 +27,8 @@ import sys, os, json, re, shlex
 
 scandir = sys.argv[1]
 try:
-    d = json.load(open(sys.argv[2], encoding="utf-8"))
+    with open(sys.argv[2], encoding="utf-8") as f:
+        d = json.load(f)
 except Exception:
     print("SKIP"); sys.exit(0)
 
@@ -39,10 +40,12 @@ cmd = d.get("tool_input", {}).get("command", "")
 if not re.search(r"\bgh\b.*\b(issue|pr)\b.*\bcreate\b", cmd):
     print("SKIP"); sys.exit(0)
 
+# gh create と判定した後で解析に失敗したら、本文を取りこぼして素通りさせない（fail-closed）。
+# crude な split にフォールバックすると --body の値を落として走査漏れ＝流出につながるため拒否する。
 try:
     toks = shlex.split(cmd)
 except Exception:
-    toks = cmd.split()
+    print("DENY"); sys.exit(0)
 
 pieces = []
 
@@ -77,6 +80,12 @@ with open(os.path.join(scandir, "payload.txt"), "w", encoding="utf-8") as w:
 print("SCAN")
 PY
 )"
+
+if [ "$decision" = "DENY" ]; then
+  echo "✋ gh コマンドの本文を解析できませんでした（クォート不整合など）。安全側に倒して送信を拒否します。" >&2
+  echo "   コマンドを修正して再実行してください。" >&2
+  exit 2
+fi
 
 [ "$decision" = "SCAN" ] || exit 0
 
