@@ -1,6 +1,6 @@
 ---
-name: ticket-plan
-description: 会話/開発計画から複数チケット下書きを生成して .issue_drafts/ に作成しフルパス一覧を表示
+name: ticket-draft
+description: 会話/開発計画から複数チケット下書きを .issue_drafts/ に AI 生成しフルパス一覧を表示する（ローカル作業）。下書きを作るだけで GitHub へは登録しない
 argument-hint: "[@PLAN.md など計画ファイル（任意）]"
 ---
 
@@ -9,8 +9,9 @@ argument-hint: "[@PLAN.md など計画ファイル（任意）]"
 その時点の会話または指定された開発計画から作業項目を抽出し、項目ごとに種別(bug/docs/feature)を
 割り当て、対応テンプレ構造に沿って .issue_drafts/<type>-<timestamp>-NN.md を N 件生成する。
 本文を AI 生成するのはこの skill（手書きの足場は /ticket-template、AI 生成は件数問わず本 skill）。
-発行は誤起票リスク回避のため本 skill に含めず、生成した各下書きを /ticket-issue @<path> で個別発行する。
-テンプレ実体は .github/ISSUE_TEMPLATE/ にある。job 境界は「人が書く(ticket-template) / AI が書く(本 skill) / 発行(ticket-issue, ticket-pr)」。
+発行は誤起票リスク回避のため本 skill に含めず、生成した各下書きを /ticket-publish @<path> で個別発行する。
+テンプレ実体は .github/ISSUE_TEMPLATE/ にある。job 境界は「人が書く(ticket-template) / AI が書く(本 skill) / GitHub へ発行(ticket-publish, ticket-pr-publish)」。
+本 skill はローカルにファイルを作るだけ（GitHub へは登録しない）なので自動起動を許容する。
 -->
 
 会話または開発計画から GitHub Issue 下書きを **AI が生成** する（1 件でも N 件でも可）。手順を厳守する。
@@ -47,12 +48,12 @@ argument-hint: "[@PLAN.md など計画ファイル（任意）]"
 5. **出力**
    - エディタでは開かない。`pwd` 等で絶対パスを得て、生成した **全下書きの絶対フルパス一覧** を出力する
      （Claude Code 上でクリックすれば開ける）。
-   - 各下書きの要点を簡潔に提示し、「各々 `/ticket-issue @<path>` で個別に発行する」と案内する。
-     一括発行は誤起票リスクが高いため本 skill には含めない（発行は `/ticket-issue`）。
+   - 各下書きの要点を簡潔に提示し、「各々 `/ticket-publish @<path>` で個別に発行する」と案内する。
+     一括発行は誤起票リスクが高いため本 skill には含めない（発行は `/ticket-publish`）。
 
 注意:
 - 本文は会話/計画ベースで生成する。会話/計画に無い情報は捏造しない。確証の無い節は明示プレースホルダにする。
 - 最終確認・編集はユーザーが行う前提。生成は下書きであり発行ではない。
 - 既存の同名ファイルは上書きしない（timestamp + 連番で衝突回避済み）。
 - job は「本文を誰が書くか」で分ける。**手で書く下書きの足場が欲しいだけなら `/ticket-template`**、
-  会話/計画から本文を起こすなら本 skill（1 件でも可）。発行は `/ticket-issue`。
+  会話/計画から本文を起こすなら本 skill（1 件でも可）。発行は `/ticket-publish`。

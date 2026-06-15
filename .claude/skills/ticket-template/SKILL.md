@@ -7,8 +7,9 @@ argument-hint: "[bug|docs|feature（任意）]"
 <!--
 概要: 手書き用チケット下書きの足場(scaffold)作成 skill。
 .github/ISSUE_TEMPLATE/ の該当テンプレを verbatim でコピーするだけ。本文の AI 生成はしない。
-人がパスをクリックしてゼロから手で書く。会話から本文を生成したい場合は /ticket-plan（N=1 でも可）を使う。
-発行は別 skill /ticket-issue。job 境界は「人が書く(本 skill) / AI が書く(ticket-plan) / 発行する(ticket-issue, ticket-pr)」。
+人がパスをクリックしてゼロから手で書く。会話から本文を生成したい場合は /ticket-draft（N=1 でも可）を使う。
+発行は別 skill /ticket-publish。job 境界は「人が書く(本 skill) / AI が書く(ticket-draft) / GitHub へ発行する(ticket-publish, ticket-pr-publish)」。
+本 skill はローカルにファイルを作るだけ（GitHub へは登録しない）なので自動起動を許容する。
 -->
 
 GitHub Issue の **手書き用** 下書きを用意する。テンプレを `.issue_drafts/` にコピーするだけで、本文は生成しない。手順を厳守する。
@@ -34,9 +35,9 @@ GitHub Issue の **手書き用** 下書きを用意する。テンプレを `.i
 5. **出力**
    - エディタでは開かない。`pwd` 等で絶対パスを得て、作成ファイルの **絶対フルパス** を表示する
      （Claude Code 上でクリックすれば開ける）。
-   - 「クリックで開いて手で記入 → `title` の `scope` を埋め受け入れ条件等を記述 → `/ticket-issue @<path>` で発行」と案内する。
+   - 「クリックで開いて手で記入 → `title` の `scope` を埋め受け入れ条件等を記述 → `/ticket-publish @<path>` で発行」と案内する。
 
 注意:
-- これは手書き用の足場。本文を AI に書かせたい（会話/計画から起こしたい）なら `/ticket-plan` を使う（1件でも N 件でも可）。
+- これは手書き用の足場。本文を AI に書かせたい（会話/計画から起こしたい）なら `/ticket-draft` を使う（1件でも N 件でも可）。
 - 既存の同名ファイルは上書きしない（timestamp で衝突回避済み）。
 - 不要な節はユーザーが手で削ってよい（テンプレ側コメントの方針どおり）。

@@ -1,6 +1,6 @@
 ---
-name: ticket-pr
-description: 現在の feature ブランチから issue 番号を拾い Closes # 付きの PR を gh で作成する
+name: ticket-pr-publish
+description: 現在の feature ブランチから issue 番号を拾い Closes # 付きの PR を gh で作成する（GitHub への登録・取り消し困難）。明示的に /ticket-pr-publish が呼ばれたときのみ起動し、自然言語の依頼では自動起動しない
 argument-hint: "[#<issue-number> など番号上書き（任意）]"
 ---
 
@@ -10,7 +10,8 @@ argument-hint: "[#<issue-number> など番号上書き（任意）]"
 PR 本文に Closes #<n> を必ず入れて gh pr create で発行する。base は default ブランチ。
 Issue⇄PR の双方向リンクは PR 本文の closing keyword でのみ生成されるため、本 skill がそれを保証する。
 運用規約は instructions/github-workflow.md、コミット規約は instructions/git-commit.md を参照。
-発行は外部公開・取り消し困難なので、発行前に必ず明示同意を取る。
+発行は外部公開・取り消し困難なので、明示的に /ticket-pr-publish が呼ばれたときのみ起動し
+（自然言語の「PR 作って」等では自動起動しない）、加えて発行前に必ず明示同意を取る（二重ガード）。
 -->
 
 現在のブランチの変更を GitHub Pull Request として作成する。手順を厳守する。
@@ -33,7 +34,7 @@ Issue⇄PR の双方向リンクは PR 本文の closing keyword でのみ生成
    - `.github/PULL_REQUEST_TEMPLATE.md` があればその節構造に沿う。無ければ Related Issue / 変更概要 / テスト / チェックの節で組む。
    - 本文の先頭付近に **必ず** `Closes #<n>` を入れる（`Fixes` / `Resolves` でも可）。これが Issue⇄PR 双方向リンクの生成条件。
    - 変更概要は `git log master..HEAD` と `git diff master...HEAD` を確認して会話/コミットから組む。捏造しない。
-   - 本文は `/tmp/ticket-pr-body-<branch>.txt` に書き出す。
+   - 本文は `/tmp/ticket-pr-publish-body-<branch>.txt` に書き出す。
 
 5. **PR タイトルの決定**
    - `type(scope): subject` 形式（→ [git-commit.md](git-commit.md)）に揃える。代表コミットの subject を流用してよい。
@@ -46,7 +47,7 @@ Issue⇄PR の双方向リンクは PR 本文の closing keyword でのみ生成
 7. **発行（同意後）**
    - リポジトリは cwd の origin を自動利用（`-R` は付けない）:
      ```
-     gh pr create --base <default-branch> --title "<title>" --body-file /tmp/ticket-pr-body-<branch>.txt
+     gh pr create --base <default-branch> --title "<title>" --body-file /tmp/ticket-pr-publish-body-<branch>.txt
      ```
    - 非対話で発行される。
 
@@ -56,5 +57,5 @@ Issue⇄PR の双方向リンクは PR 本文の closing keyword でのみ生成
 
 注意:
 - gh 未認証なら `gh auth status` で確認し、ユーザーに `gh auth login` を促す。
-- 一括作成・自動マージはしない（誤操作リスク回避、`ticket-issue` の方針に合わせる）。マージはユーザーが行う。
-- 既存スキル `ticket-template` / `ticket-issue` / `ticket-plan` の挙動は変更しない。
+- 一括作成・自動マージはしない（誤操作リスク回避、`ticket-publish` の方針に合わせる）。マージはユーザーが行う。
+- 既存スキル `ticket-template` / `ticket-publish` / `ticket-draft` の挙動は変更しない。
