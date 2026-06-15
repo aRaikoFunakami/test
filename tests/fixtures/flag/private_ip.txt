@@ -1,0 +1,2 @@
+internal db host: 10.20.30.40
+gateway: 172.16.5.1
