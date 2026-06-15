@@ -46,7 +46,7 @@ regexes = [
   '''[Cc]:\\Users\\(user|username|<[^>]+>)\\''',
   # 例示・通知専用のメールドメイン
   '''@(example|test|invalid|localhost)\.''',
-  '''noreply@''',
+  '''noreply@(example|test)\.''',
   '''@users\.noreply\.github\.com''',
   # 例示用に予約されたアドレス帯（ドキュメント頻出）
   '''\b(192\.168\.0\.1|192\.168\.1\.1|10\.0\.0\.1)\b''',
