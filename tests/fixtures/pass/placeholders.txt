@@ -1,0 +1,6 @@
+path: /Users/<user>/project/file
+ci: /home/runner/work/repo
+mail: noreply@example.com
+bot: ci-bot@users.noreply.github.com
+example ip: 192.168.0.1
+example tel: 090-0000-0000

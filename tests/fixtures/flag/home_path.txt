@@ -1,0 +1,2 @@
+log output: /Users/realname/GitHub/project/.env
+home: /home/realname/.ssh/id_rsa
