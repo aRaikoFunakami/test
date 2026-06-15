@@ -1,12 +1,14 @@
 ---
+name: ticket-issue
 description: .issue_drafts/ の下書きファイルを gh で GitHub Issue として発行する
 argument-hint: "@.issue_drafts/<file>.md"
 ---
 
 <!--
-概要: チケット下書き発行コマンド。
+概要: チケット下書き発行 skill。
 引数で渡された下書き .md の frontmatter から title/labels を取り、
 本文を body にして gh issue create で発行する。リポジトリは cwd の origin を使う。
+下書きは /ticket-template（手書き）または /ticket-plan（AI 生成）で作る。
 -->
 
 引数 `$ARGUMENTS` の下書きファイルを GitHub Issue として発行する。手順を厳守する。

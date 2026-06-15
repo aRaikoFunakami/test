@@ -1,13 +1,14 @@
 ---
+name: ticket-pr
 description: 現在の feature ブランチから issue 番号を拾い Closes # 付きの PR を gh で作成する
 argument-hint: "[#<issue-number> など番号上書き（任意）]"
 ---
 
 <!--
-概要: PR 作成コマンド。
+概要: PR 作成 skill。
 現在のブランチ名 feature/<n>-... 等から issue 番号を抽出し、
 PR 本文に Closes #<n> を必ず入れて gh pr create で発行する。base は default ブランチ。
-Issue⇄PR の双方向リンクは PR 本文の closing keyword でのみ生成されるため、本コマンドがそれを保証する。
+Issue⇄PR の双方向リンクは PR 本文の closing keyword でのみ生成されるため、本 skill がそれを保証する。
 運用規約は instructions/github-workflow.md、コミット規約は instructions/git-commit.md を参照。
 発行は外部公開・取り消し困難なので、発行前に必ず明示同意を取る。
 -->
@@ -55,5 +56,5 @@ Issue⇄PR の双方向リンクは PR 本文の closing keyword でのみ生成
 
 注意:
 - gh 未認証なら `gh auth status` で確認し、ユーザーに `gh auth login` を促す。
-- 一括作成・自動マージはしない（誤操作リスク回避、`ticket-issue.md` の方針に合わせる）。マージはユーザーが行う。
-- 既存コマンド `ticket.md` / `ticket-issue.md` / `ticket-plan.md` の挙動は変更しない。
+- 一括作成・自動マージはしない（誤操作リスク回避、`ticket-issue` の方針に合わせる）。マージはユーザーが行う。
+- 既存スキル `ticket-template` / `ticket-issue` / `ticket-plan` の挙動は変更しない。
