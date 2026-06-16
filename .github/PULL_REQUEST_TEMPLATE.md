@@ -1,7 +1,7 @@
 <!--
 概要: Pull Request 本文テンプレート。
 PR 本文の closing keyword でのみ Issue⇄PR の双方向リンク(Development 欄)が生成されるため、
-「Related Issue」に Closes #<issue> を必ず記載させる。運用規約は instructions/github-workflow.md を参照。
+「Related Issue」に Closes #<issue> を必ず記載させる。運用規約は github-workflow skill を参照。
 -->
 
 ## Related Issue

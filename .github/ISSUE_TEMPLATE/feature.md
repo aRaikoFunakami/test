@@ -8,7 +8,7 @@ assignees: ''
 
 <!--
 概要: 機能追加 Issue の Markdown テンプレート。
-追加質問なしで着手できる粒度で記述する（instructions/github-workflow.md）。曖昧な要望のまま起票しない。
+追加質問なしで着手できる粒度で記述する（github-workflow skill）。曖昧な要望のまま起票しない。
 各見出しは自由記述。不要な節は削除してよい。
 -->
 

@@ -8,7 +8,7 @@ assignees: ''
 
 <!--
 概要: バグ報告 Issue の Markdown テンプレート。
-再現手順・期待値・実際の挙動を具体的に。追加質問なしで着手できる粒度で記述する（instructions/github-workflow.md）。
+再現手順・期待値・実際の挙動を具体的に。追加質問なしで着手できる粒度で記述する（github-workflow skill）。
 各見出しは自由記述。不要な節は削除してよい。
 -->
 
