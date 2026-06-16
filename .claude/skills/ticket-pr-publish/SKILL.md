@@ -9,7 +9,7 @@ argument-hint: "[#<issue-number> など番号上書き（任意）]"
 現在のブランチ名 feature/<n>-... 等から issue 番号を抽出し、
 PR 本文に Closes #<n> を必ず入れて gh pr create で発行する。base は default ブランチ。
 Issue⇄PR の双方向リンクは PR 本文の closing keyword でのみ生成されるため、本 skill がそれを保証する。
-運用規約は instructions/github-workflow.md、コミット規約は instructions/git-commit.md を参照。
+運用規約は github-workflow skill、コミット規約は git-commit skill を参照。
 発行は外部公開・取り消し困難なので、明示的に /ticket-pr-publish が呼ばれたときのみ起動し
 （自然言語の「PR 作って」等では自動起動しない）、加えて発行前に必ず明示同意を取る（二重ガード）。
 -->
@@ -37,7 +37,7 @@ Issue⇄PR の双方向リンクは PR 本文の closing keyword でのみ生成
    - 本文は `/tmp/ticket-pr-publish-body-<branch>.txt` に書き出す。
 
 5. **PR タイトルの決定**
-   - `type(scope): subject` 形式（→ [git-commit.md](git-commit.md)）に揃える。代表コミットの subject を流用してよい。
+   - `type(scope): subject` 形式（→ git-commit skill）に揃える。代表コミットの subject を流用してよい。
 
 6. **発行前チェック（必須・ここは通常文で確認）**
    - 抽出した issue 番号・base ブランチ・タイトル・発行先リポジトリをユーザーに提示する。
